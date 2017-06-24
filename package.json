@@ -1,0 +1,17 @@
+{
+  "name": "koa-api-logger",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "repository": "git@github.com:willin/koa-api-logger.git",
+  "author": "willin <willin@willin.org>",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^4.0.0",
+    "eslint-config-dwing": "^1.1.0",
+    "koa": "^2.3.0",
+    "koa-router": "^7.2.1"
+  },
+  "dependencies": {
+    "useragent": "^2.1.13"
+  }
+}
