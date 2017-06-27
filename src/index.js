@@ -1,21 +1,37 @@
-const useragent = require('useragent');
+const assert = require('assert');
+const Calc = require('./calc');
 
 const DEFAULTS = {
-  key: 'api'
-
+  // err: async (ctx) => { ctx.status = 500; },
+  redis: {
+    host: '127.0.0.1',
+    port: 6379,
+    db: 0,
+    prefix: 'kal:',
+    ttl: 86400 * 180
+  }
 };
 
-module.exports = (options) => {
-  const opts = Object.assign({}, DEFAULTS, options);
+module.exports = (opts) => {
+  const config = Object.assign({}, DEFAULTS, opts);
+  assert(config.redis, 'Redis Config Required');
+  if (config.err) {
+    assert(typeof config.err === 'function', 'Error Handler Require Function');
+  }
+
+  const calc = Calc(config.redis);
 
   return async (ctx, next) => {
     // log start time
-
     const start = new Date();
     try {
+      // ignore favicon.ico
+      if (ctx.request.url === '/favicon.ico') {
+        return await next();
+      }
       await next();
-    } catch (err) {
-
+    } catch (e) {
+      config.err(ctx, e);
     }
     // log end time
     const end = new Date();
@@ -23,8 +39,6 @@ module.exports = (options) => {
     if (ctx._matchedRoute) {
       path = `${ctx._matchedRoute}`;
     }
-    const ua = useragent.parse(ctx.request.header['user-agent']);
-    console.log(ua.toString(), ua.toAgent(), ua.os.toString());
-    console.log(path, end - start, 'ms');
+    await calc({ path, time: end - start, success: ~~ctx.status < 500, useragent: ctx.request.useragent });
   };
 };

@@ -2,16 +2,47 @@
   "name": "koa-api-logger",
   "version": "1.0.0",
   "main": "src/index.js",
-  "repository": "git@github.com:willin/koa-api-logger.git",
-  "author": "willin <willin@willin.org>",
-  "license": "MIT",
+  "scripts": {
+    "test": "nyc ava -vs && nyc report --reporter=text-lcov | coveralls",
+    "start": "nyc --reporter html ava -vs && open ./.nyc_output/index.html"
+  },
+  "ava": {
+    "files": [
+      "test/**/*.js",
+      "!**/_*/*.js",
+      "!**/_*.js"
+    ]
+  },
+  "nyc": {
+    "lines": 80,
+    "check-coverage": true,
+    "reporter": [
+      "text-lcov"
+    ],
+    "report-dir": "./.nyc_output",
+    "exclude": [
+      "test",
+      "test{,-*}.js",
+      "**/*.test.js",
+      "**/__tests__/**"
+    ]
+  },
   "devDependencies": {
+    "ava": "^0.19.1",
+    "coveralls": "^2.13.1",
     "eslint": "^4.0.0",
     "eslint-config-dwing": "^1.1.0",
     "koa": "^2.3.0",
-    "koa-router": "^7.2.1"
+    "koa-router": "^7.2.1",
+    "nyc": "^11.0.2",
+    "supertest": "^3.0.0"
   },
   "dependencies": {
+    "@dwing/common": "^1.1.4",
+    "@dwing/redis": "^1.0.0",
     "useragent": "^2.1.13"
-  }
+  },
+  "repository": "git@github.com:willin/koa-api-logger.git",
+  "author": "willin <willin@willin.org>",
+  "license": "MIT"
 }
