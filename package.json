@@ -1,6 +1,7 @@
 {
   "name": "koa-api-logger",
-  "version": "1.0.2",
+  "description": "Api Logger & Monitor for Koa 2 (can work with router/joi router)",
+  "version": "1.0.3",
   "main": "src/index.js",
   "scripts": {
     "test": "nyc ava -vs && nyc report --reporter=text-lcov | coveralls",
