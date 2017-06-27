@@ -3,7 +3,7 @@ const { pad } = require('@dwing/common');
 
 module.exports = (config) => {
   const redis = Redis(config);
-  return async ({ path = '/', time = 0, success = true } = {}) => {
+  return async ({ path, time, success }) => {
     const date = new Date();
     const key = date.getFullYear() + pad(date.getMonth() + 1, 2) + pad(date.getDate(), 2);
     const keys = ['total', path];

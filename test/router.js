@@ -3,7 +3,7 @@ const app = require('./_lib/router');
 const redis = require('./_lib/redis');
 
 test.before(async () => {
-  const tasks = (await redis.keys('kal:*')).map(x => redis.del(x));
+  const tasks = (await redis.keys('kal:*')).map(x => redis.hset(x, 'total', '{"count":10000000,"success":10000000,"avg":0,"max":0,"min":100}'));
   await Promise.all(tasks);
 });
 

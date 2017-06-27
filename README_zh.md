@@ -1,6 +1,6 @@
 # koa-api-logger
 
-[![npm](https://img.shields.io/npm/v/koa-api-logger.svg?style=plastic)](https://npmjs.org/package/koa-api-logger) [![npm](https://img.shields.io/npm/dm/koa-api-logger.svg?style=plastic)](https://npmjs.org/package/koa-api-logger) [![npm](https://img.shields.io/npm/dt/koa-api-logger.svg?style=plastic)](https://npmjs.org/package/koa-api-logger) [![Coverage Status](https://coveralls.io/repos/github/willin/koa-api-logger/badge.svg?branch=master)](https://coveralls.io/github/willin/koa-api-logger?branch=master)
+[![npm](https://img.shields.io/npm/v/koa-api-logger.svg?style=plastic)](https://npmjs.org/package/koa-api-logger) [![npm](https://img.shields.io/npm/dm/koa-api-logger.svg?style=plastic)](https://npmjs.org/package/koa-api-logger) [![npm](https://img.shields.io/npm/dt/koa-api-logger.svg?style=plastic)](https://npmjs.org/package/koa-api-logger) [![Coverage Status](https://coveralls.io/repos/github/willin/koa-api-logger/badge.svg?branch=master)](https://coveralls.io/github/willin/koa-api-logger?branch=master) [![Travis-CI](https://travis-ci.org/willin/koa-api-logger.svg?branch=master)](https://travis-ci.org/willin/koa-api-logger)
 
 [English README](https://github.com/willin/koa-api-logger#koa-api-logger)
 
