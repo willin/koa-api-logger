@@ -66,6 +66,31 @@ key   | val
 total | {count:1,success:1,avg:1,max:1,min:1}
 /#{path} | {count:1,success:1,avg:1,max:1,min:1}
 
+## Monitor
+
+```js
+const monitor = require('koa-api-logger/monitor');
+const appName = monitor({
+  host: '127.0.0.1',
+  port: 6379,
+  db: 0,
+  prefix: 'kal:'
+});
+
+appName('20170808').then(data=>console.log);
+/* like:
+[ 
+  { 
+    key: 'total',
+    data: { count: 2, success: 2, avg: 0.5, max: 1, min: 0 } 
+  },
+  { 
+    key: '/user/:name',
+    data: { count: 3, success: 3, avg: 0.3333333333333333, max: 1, min: 0 } 
+  } 
+]
+*/
+```
 
 ## License
 

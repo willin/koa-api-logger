@@ -55,6 +55,33 @@ app.listen(3000);
 }
 ```
 
+
+## 监控（后端系统中）
+
+```js
+const monitor = require('koa-api-logger/monitor');
+const appName = monitor({
+  host: '127.0.0.1',
+  port: 6379,
+  db: 0,
+  prefix: 'kal:'
+});
+
+appName('20170808').then(data=>console.log);
+/* 结果结构:
+[ 
+  { 
+    key: 'total',
+    data: { count: 2, success: 2, avg: 0.5, max: 1, min: 0 } 
+  },
+  { 
+    key: '/user/:name',
+    data: { count: 3, success: 3, avg: 0.3333333333333333, max: 1, min: 0 } 
+  } 
+]
+*/
+```
+
 ## License
 
 MIT
