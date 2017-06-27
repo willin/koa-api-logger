@@ -1,5 +1,7 @@
 language: node_js
 node_js: 7
+services:
+  - redis-server
 install:
-- npm install .
+  - npm install .
 script: npm test

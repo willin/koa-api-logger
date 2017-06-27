@@ -1,6 +1,6 @@
 # koa-api-logger
 
-[![npm](https://img.shields.io/npm/v/koa-api-logger.svg?style=plastic)](https://npmjs.org/package/koa-api-logger) [![npm](https://img.shields.io/npm/dt/koa-api-logger.svg?style=plastic)](https://npmjs.org/package/koa-api-logger)
+[![npm](https://img.shields.io/npm/v/koa-api-logger.svg?style=plastic)](https://npmjs.org/package/koa-api-logger) [![npm](https://img.shields.io/npm/dm/koa-api-logger.svg?style=plastic)](https://npmjs.org/package/koa-api-logger) [![npm](https://img.shields.io/npm/dt/koa-api-logger.svg?style=plastic)](https://npmjs.org/package/koa-api-logger)
 
 [中文说明](https://github.com/willin/koa-api-logger/blob/master/README_zh.md#koa-api-logger)
 
