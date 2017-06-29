@@ -38,6 +38,8 @@ module.exports = (opts) => {
     let path = ctx.request.url;
     if (ctx._matchedRoute) {
       path = `${ctx._matchedRoute}`;
+    } else if (path.indexOf('?') !== -1) {
+      path = path.split('?')[0];
     }
     await calc({ path, time: end - start, success: ~~ctx.status < 500, useragent: ctx.request.useragent });
   };
