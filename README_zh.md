@@ -82,6 +82,18 @@ appName('20170808').then(data=>console.log);
 */
 ```
 
+历史查询:
+
+```js
+appName.history().then(data=>console.log);
+/* 结果结构:
+[ 
+ '20170504',
+ '20170505'
+]
+*/
+```
+
 ## License
 
 MIT

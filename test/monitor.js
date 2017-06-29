@@ -16,3 +16,11 @@ test('Monitor', async (t) => {
   const result = await app();
   t.is(Array.isArray(result), true);
 });
+
+test('Monitor History', async (t) => {
+  const app = monitor({
+    prefix: 'kal:'
+  });
+  const result = await app.history();
+  t.is(Array.isArray(result), true);
+});

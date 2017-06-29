@@ -92,6 +92,18 @@ appName('20170808').then(data=>console.log);
 */
 ```
 
+History:
+
+```js
+appName.history().then(data=>console.log);
+/* like:
+[ 
+ '20170504',
+ '20170505'
+]
+*/
+```
+
 ## License
 
 MIT
