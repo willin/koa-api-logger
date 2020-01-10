@@ -1,7 +1,7 @@
 {
   "name": "koa-api-logger",
   "description": "Api Logger & Monitor for Koa 2 (can work with router/joi router)",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "main": "src/index.js",
   "scripts": {
     "test": "nyc ava -vs && nyc report --reporter=text-lcov > coverage.lcov | codecov",
@@ -29,19 +29,19 @@
     ]
   },
   "devDependencies": {
-    "ava": "^0.19.1",
-    "codecov": "^2.2.0",
-    "eslint": "^4.0.0",
-    "eslint-config-dwing": "^1.1.0",
-    "koa": "^2.3.0",
-    "koa-router": "^7.2.1",
-    "nyc": "^11.0.2",
-    "supertest": "^3.0.0"
+    "ava": "^2.4.0",
+    "codecov": "^3.6.1",
+    "eslint": "^6.8.0",
+    "eslint-config-willin": "^1.0.2",
+    "koa": "^2.11.0",
+    "koa-router": "^7.4.0",
+    "nyc": "^15.0.0",
+    "supertest": "^4.0.2"
   },
   "dependencies": {
-    "@dwing/common": "^1.1.4",
-    "@dwing/redis": "^1.0.0",
-    "useragent": "^2.1.13"
+    "@xibang/node-common": "^1.0.3",
+    "@xibang/redis": "^1.0.1",
+    "useragent": "^2.3.0"
   },
   "repository": "git@github.com:willin/koa-api-logger.git",
   "author": "willin <willin@willin.org>",

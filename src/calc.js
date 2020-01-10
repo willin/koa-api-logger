@@ -1,7 +1,7 @@
-const Redis = require('@dwing/redis');
-const { pad } = require('@dwing/common');
+const Redis = require('@xibang/redis');
+const { pad } = require('@xibang/node-common');
 
-module.exports = (config) => {
+module.exports = config => {
   const redis = Redis(config);
   return async ({ path, time, success }) => {
     const date = new Date();
@@ -35,9 +35,9 @@ module.exports = (config) => {
       result.count += 1;
       if (success) {
         result.success += 1;
-        result.avg = (result.success > 10E5 ? result.avg : ((time + result.avg * (result.success - 1)) / result.success));
-        result.max = (result.max > time) ? result.max : time;
-        result.min = (result.min < time) ? result.min : time;
+        result.avg = result.success > 10e5 ? result.avg : (time + result.avg * (result.success - 1)) / result.success;
+        result.max = result.max > time ? result.max : time;
+        result.min = result.min < time ? result.min : time;
       }
       return redis.hset(key, keys[i], JSON.stringify(result));
     });

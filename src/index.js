@@ -12,8 +12,8 @@ const DEFAULTS = {
   }
 };
 
-module.exports = (opts) => {
-  const config = Object.assign({}, DEFAULTS, opts);
+module.exports = opts => {
+  const config = { ...DEFAULTS, ...opts };
   assert(config.redis, 'Redis Config Required');
   if (config.err) {
     assert(typeof config.err === 'function', 'Error Handler Require Function');
@@ -39,6 +39,7 @@ module.exports = (opts) => {
     if (ctx._matchedRoute) {
       path = `${ctx._matchedRoute}`;
     } else if (path.indexOf('?') !== -1) {
+      // eslint-disable-next-line prefer-destructuring
       path = path.split('?')[0];
     }
     await calc({ path, time: end - start, success: ~~ctx.status < 500, useragent: ctx.request.useragent });

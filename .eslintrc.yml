@@ -1,0 +1,5 @@
+root: true
+extends: willin
+rules:
+  arrow-parens: 0
+  no-underscore-dangle: 0

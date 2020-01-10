@@ -1,5 +1,5 @@
-const Redis = require('@dwing/redis');
-const { pad } = require('@dwing/common');
+const Redis = require('@xibang/redis');
+const { pad } = require('@xibang/node-common');
 
 const date = new Date();
 
@@ -14,7 +14,10 @@ module.exports = (config = {}) => {
   };
   fn.history = async () => {
     const keys = await redis.keys(`${config.prefix}*`);
-    return keys.map(x => ~~x.replace(config.prefix, '')).sort().map(String);
+    return keys
+      .map(x => ~~x.replace(config.prefix, ''))
+      .sort()
+      .map(String);
   };
   return fn;
 };
