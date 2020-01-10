@@ -7,19 +7,19 @@ test.before(async () => {
   await Promise.all(tasks);
 });
 
-test('koa router', async (t) => {
+test('koa router', async t => {
   const res = await app.get('/user/name');
   t.is(res.status, 200);
   t.is(res.text, 'name');
 });
 
-test('koa router', async (t) => {
+test('koa router 2', async t => {
   const res = await app.get('/user/willin');
   t.is(res.status, 200);
   t.is(res.text, 'willin');
 });
 
-test('err handler', async (t) => {
+test('err handler 3', async t => {
   const res = await app.get('/error');
   t.is(res.status, 500);
 });

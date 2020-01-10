@@ -1,4 +1,4 @@
-const Redis = require('@dwing/redis');
+const Redis = require('@xibang/redis');
 
 const redis = Redis();
 

@@ -6,7 +6,7 @@ const logger = require('../..');
 
 const app = new Koa();
 
-router.get('/user/:name', (ctx) => {
+router.get('/user/:name', ctx => {
   ctx.body = ctx.params.name;
 });
 
@@ -15,11 +15,14 @@ router.get('/error', () => {
   throw 'Error';
 });
 
-app.use(logger({
-  err: async (ctx) => { ctx.status = 500; }
-}));
+app.use(
+  logger({
+    err: async ctx => {
+      ctx.status = 500;
+    }
+  })
+);
 
-app.use(router.routes())
-  .use(router.allowedMethods());
+app.use(router.routes()).use(router.allowedMethods());
 
 module.exports = request(app.listen());

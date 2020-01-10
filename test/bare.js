@@ -7,19 +7,19 @@ test.before(async () => {
   await Promise.all(tasks);
 });
 
-test('ignore /favicon.ico', async (t) => {
+test('ignore /favicon.ico', async t => {
   const res = await app.get('/favicon.ico');
   t.is(res.status, 200);
   t.is(res.text, 'hello');
 });
 
-test('bare koa', async (t) => {
+test('bare koa', async t => {
   const res = await app.get('/user');
   t.is(res.status, 200);
   t.is(res.text, 'hello');
 });
 
-test('bare koa', async (t) => {
+test('bare koa with qs', async t => {
   const res = await app.get('/user?name=test');
   t.is(res.status, 200);
   t.is(res.text, 'hello');

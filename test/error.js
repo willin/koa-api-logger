@@ -7,15 +7,14 @@ test.before(async () => {
   await Promise.all(tasks);
 });
 
-test('JSON Error', async (t) => {
+test('JSON Error', async t => {
   const res = await app.get('/user/name');
   t.is(res.status, 200);
   t.is(res.text, 'hello');
 });
 
-test('JSON Error', async (t) => {
+test('JSON Error 2', async t => {
   const res = await app.get('/user/name');
   t.is(res.status, 200);
   t.is(res.text, 'hello');
 });
-
