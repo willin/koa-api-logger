@@ -23,17 +23,17 @@ const logger = require('koa-api-logger');
 
 const app = new Koa();
 
-app.use(logger({
-  // 配置参数
-}));
+app.use(
+  logger({
+    // 配置参数
+  })
+);
 
-
-router.get('/user/:name', (ctx) => {
+router.get('/user/:name', ctx => {
   ctx.body = name;
 });
 
-app.use(router.routes())
-  .use(router.allowedMethods());
+app.use(router.routes()).use(router.allowedMethods());
 
 app.listen(3000);
 ```
@@ -45,6 +45,8 @@ app.listen(3000);
   err: async (ctx, err) => {
     // 错误处理函数
   },
+  // 如： ['/upload']
+  ignore:[],
   redis: {
     host: '127.0.0.1',
     port: 6379,
@@ -54,7 +56,6 @@ app.listen(3000);
   }
 }
 ```
-
 
 ## 监控（后端系统中）
 
@@ -67,17 +68,17 @@ const appName = monitor({
   prefix: 'kal:'
 });
 
-appName('20170808').then(data=>console.log);
+appName('20170808').then(data => console.log);
 /* 结果结构:
-[ 
-  { 
+[
+  {
     key: 'total',
-    data: { count: 2, success: 2, avg: 0.5, max: 1, min: 0 } 
+    data: { count: 2, success: 2, avg: 0.5, max: 1, min: 0 }
   },
-  { 
+  {
     key: '/user/:name',
-    data: { count: 3, success: 3, avg: 0.3333333333333333, max: 1, min: 0 } 
-  } 
+    data: { count: 3, success: 3, avg: 0.3333333333333333, max: 1, min: 0 }
+  }
 ]
 */
 ```
@@ -85,9 +86,9 @@ appName('20170808').then(data=>console.log);
 历史查询:
 
 ```js
-appName.history().then(data=>console.log);
+appName.history().then(data => console.log);
 /* 结果结构:
-[ 
+[
  '20170504',
  '20170505'
 ]

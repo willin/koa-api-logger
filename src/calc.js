@@ -1,12 +1,12 @@
 const Redis = require('@xibang/redis');
 const { pad } = require('@xibang/node-common');
 
-module.exports = config => {
+module.exports = (config, ignore = []) => {
   const redis = Redis(config);
   return async ({ path, time, success }) => {
     const date = new Date();
     const key = date.getFullYear() + pad(date.getMonth() + 1, 2) + pad(date.getDate(), 2);
-    const keys = ['total', path];
+    const keys = ignore.includes(path) ? [path] : ['total', path];
     // Get All
     const tasks = (await Promise.all(keys.map(k => redis.hget(key, k)))).map((x, i) => {
       // Re Calc

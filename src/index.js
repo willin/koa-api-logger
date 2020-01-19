@@ -3,6 +3,7 @@ const Calc = require('./calc');
 
 const DEFAULTS = {
   // err: async (ctx) => { ctx.status = 500; },
+  ignore: [],
   redis: {
     host: '127.0.0.1',
     port: 6379,
@@ -19,7 +20,7 @@ module.exports = opts => {
     assert(typeof config.err === 'function', 'Error Handler Require Function');
   }
 
-  const calc = Calc(config.redis);
+  const calc = Calc(config.redis, config.ignore);
 
   return async (ctx, next) => {
     // log start time

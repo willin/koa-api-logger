@@ -6,7 +6,7 @@
 
 ## Usage
 
-### Install 
+### Install
 
 ```bash
 yarn add koa-api-logger
@@ -23,17 +23,17 @@ const logger = require('koa-api-logger');
 
 const app = new Koa();
 
-app.use(logger({
-  // options
-}));
+app.use(
+  logger({
+    // options
+  })
+);
 
-
-router.get('/user/:name', (ctx) => {
+router.get('/user/:name', ctx => {
   ctx.body = name;
 });
 
-app.use(router.routes())
-  .use(router.allowedMethods());
+app.use(router.routes()).use(router.allowedMethods());
 
 app.listen(3000);
 ```
@@ -45,6 +45,8 @@ app.listen(3000);
   err: async (ctx, err) => {
     // codes to handle error
   },
+  // Such as: ['/upload']
+  ignore: [],
   redis: {
     host: '127.0.0.1',
     port: 6379,
@@ -55,16 +57,16 @@ app.listen(3000);
 }
 ```
 
-## Design 
+## Design
 
 ### Redis Hash Table
 
 `key:20170808`
 
-key   | val
----   | ---
-total | {count:1,success:1,avg:1,max:1,min:1}
-/#{path} | {count:1,success:1,avg:1,max:1,min:1}
+| key      | val                                   |
+| -------- | ------------------------------------- |
+| total    | {count:1,success:1,avg:1,max:1,min:1} |
+| /#{path} | {count:1,success:1,avg:1,max:1,min:1} |
 
 ## Monitor
 
@@ -77,17 +79,17 @@ const appName = monitor({
   prefix: 'kal:'
 });
 
-appName('20170808').then(data=>console.log);
+appName('20170808').then(data => console.log);
 /* like:
-[ 
-  { 
+[
+  {
     key: 'total',
-    data: { count: 2, success: 2, avg: 0.5, max: 1, min: 0 } 
+    data: { count: 2, success: 2, avg: 0.5, max: 1, min: 0 }
   },
-  { 
+  {
     key: '/user/:name',
-    data: { count: 3, success: 3, avg: 0.3333333333333333, max: 1, min: 0 } 
-  } 
+    data: { count: 3, success: 3, avg: 0.3333333333333333, max: 1, min: 0 }
+  }
 ]
 */
 ```
@@ -95,9 +97,9 @@ appName('20170808').then(data=>console.log);
 History:
 
 ```js
-appName.history().then(data=>console.log);
+appName.history().then(data => console.log);
 /* like:
-[ 
+[
  '20170504',
  '20170505'
 ]
