@@ -12,10 +12,12 @@ module.exports = (config = {}) => {
       data: JSON.parse(result[k])
     }));
   };
+  const opts = [].concat(config);
+  const prefix = opts[opts.length - 1].keyPrefix || '';
   fn.history = async () => {
-    const keys = await redis.keys(`${config.prefix}*`);
+    const keys = await redis.keys(`${prefix}*`);
     return keys
-      .map(x => ~~x.replace(config.prefix, ''))
+      .map(x => ~~x.replace(prefix, ''))
       .sort()
       .map(String);
   };
