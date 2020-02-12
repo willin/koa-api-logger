@@ -1,4 +1,4 @@
-const Redis = require('@xibang/redis');
+const Redis = require('@shiwangme/redis').default;
 const { pad } = require('@xibang/node-common');
 
 const date = new Date();
