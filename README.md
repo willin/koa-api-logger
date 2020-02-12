@@ -51,7 +51,7 @@ app.listen(3000);
     host: '127.0.0.1',
     port: 6379,
     db: 0, // db to store
-    prefix: 'kal:', // redis store prefix
+    keyPrefix: 'kal:', // redis store prefix
     ttl: 86400 * 180 // saving logs for 180 days
   }
 }
@@ -76,7 +76,7 @@ const appName = monitor({
   host: '127.0.0.1',
   port: 6379,
   db: 0,
-  prefix: 'kal:'
+  keyPrefix: 'kal:'
 });
 
 appName('20170808').then(data => console.log);

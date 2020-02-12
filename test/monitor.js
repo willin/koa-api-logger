@@ -11,7 +11,7 @@ test('Monitor', async t => {
 
 test('Monitor prefix', async t => {
   const app = monitor({
-    prefix: 'kal:'
+    keyPrefix: 'kal:'
   });
   const result = await app();
   t.is(Array.isArray(result), true);
@@ -19,7 +19,7 @@ test('Monitor prefix', async t => {
 
 test('Monitor History', async t => {
   const app = monitor({
-    prefix: 'kal:'
+    keyPrefix: 'kal:'
   });
   const result = await app.history();
   t.is(Array.isArray(result), true);

@@ -51,7 +51,7 @@ app.listen(3000);
     host: '127.0.0.1',
     port: 6379,
     db: 0, // 存储在db0中
-    prefix: 'kal:', // 存储键名前缀
+    keyPrefix: 'kal:', // 存储键名前缀
     ttl: 86400 * 180 // 存储180天
   }
 }
@@ -65,7 +65,7 @@ const appName = monitor({
   host: '127.0.0.1',
   port: 6379,
   db: 0,
-  prefix: 'kal:'
+  keyPrefix: 'kal:'
 });
 
 appName('20170808').then(data => console.log);
