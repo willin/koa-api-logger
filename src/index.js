@@ -13,6 +13,8 @@ const DEFAULTS = {
   }
 };
 
+const IGNORE_PATH = ['/favicon.ico', '/robots.txt'];
+
 module.exports = opts => {
   const config = { ...DEFAULTS, ...opts };
   assert(config.redis, 'Redis Config Required');
@@ -27,7 +29,7 @@ module.exports = opts => {
     const start = new Date();
     try {
       // ignore favicon.ico
-      if (ctx.request.url === '/favicon.ico') {
+      if (IGNORE_PATH.includes(ctx.request.url)) {
         return await next();
       }
       await next();
