@@ -4,7 +4,7 @@ const { pad } = require('@xibang/node-common');
 const date = new Date();
 
 module.exports = (config = {}) => {
-  const redis = Redis(config);
+  const redis = Redis(...[].concat(config));
   const fn = async (key = date.getFullYear() + pad(date.getMonth() + 1, 2) + pad(date.getDate(), 2)) => {
     const result = await redis.hgetall(key);
     return Object.keys(result).map(k => ({
