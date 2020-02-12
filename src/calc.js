@@ -1,8 +1,8 @@
-const Redis = require('@xibang/redis');
+const Redis = require('@shiwangme/redis').default;
 const { pad } = require('@xibang/node-common');
 
 module.exports = (config, ignore = []) => {
-  const redis = Redis(config);
+  const redis = Redis(...config);
   return async ({ path, time, success }) => {
     const date = new Date();
     const key = date.getFullYear() + pad(date.getMonth() + 1, 2) + pad(date.getDate(), 2);
