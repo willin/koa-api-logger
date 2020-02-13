@@ -87,7 +87,7 @@ appName('20170808').then(data => console.log);
     data: { count: 2, success: 2, avg: 0.5, max: 1, min: 0 }
   },
   {
-    key: '/user/:name',
+    key: 'GET::/user/:name',
     data: { count: 3, success: 3, avg: 0.3333333333333333, max: 1, min: 0 }
   }
 ]

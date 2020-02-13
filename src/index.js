@@ -39,12 +39,13 @@ module.exports = opts => {
     // log end time
     const end = new Date();
     let path = ctx.request.url;
+    const { method } = ctx.request;
     if (ctx._matchedRoute) {
       path = `${ctx._matchedRoute}`;
     } else if (path.indexOf('?') !== -1) {
       // eslint-disable-next-line prefer-destructuring
       path = path.split('?')[0];
     }
-    await calc({ path, time: end - start, success: ~~ctx.status < 500, useragent: ctx.request.useragent });
+    await calc({ path: `${method}::${path}`, time: end - start, success: ~~ctx.status < 500, useragent: ctx.request.useragent });
   };
 };
